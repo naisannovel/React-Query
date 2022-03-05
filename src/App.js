@@ -1,8 +1,15 @@
 import React from 'react';
+import Get from './components/Get';
+
+// React Query DevTools
+import { ReactQueryDevtools } from 'react-query/devtools';
 
 const App = () =>{
     return (
-        <h1>hello world</h1>
+        <>
+            <Get />
+            <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
+        </>
     )
 }
 

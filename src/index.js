@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import App from './App';
+import { QueryClientProvider, QueryClient } from 'react-query';
+
+const queryClient = new QueryClient();
 
 ReactDom.render(
-    <React.Fragment>
+    <QueryClientProvider client={queryClient}>
         <App />
-    </React.Fragment>
+    </QueryClientProvider>
 , document.getElementById('root'));
