@@ -8,7 +8,7 @@ const Get = () => {
         return axios.get('https://gorest.co.in/public/v2/users');
     }
 
-    const { data, isLoading, error, isError, isFetching } = useQuery('get-data', fetchData, 
+    const { data, isLoading, error, isError, isFetching, refetch } = useQuery('get-data', fetchData, 
     {
         cacheTime: '10000', // default time 5 min. 5min browser will cached these data.
         staleTime: 0, // default 0. if 10 sec then fetch/re-fetch will not happen in this time.
@@ -16,11 +16,14 @@ const Get = () => {
         refetchOnWindowFocus: true, // default true. when window will focus it will re-fetch data.
         refetchInterval: false, // default false. that mean's frequently data will not fetch. when i will set 2000(2 sec) then every 2 sec later frequently it will refetch.
         refetchIntervalInBackground: true, // if true it will work in background.
+
+        // important
+        enabled: true, // default true. for true when page load it fetch data. it works like useEffect hook. if false it will not fetch data.
     })
 
 
     return (
-        <h1>Hello world bd</h1>
+        <button onClick={refetch} >Load Data</button>
     )
 }
 
